@@ -351,7 +351,7 @@ graph LR
         J -->|Fallo| R
         
         R -->|Reintento OK| K
-        R -->|Reintento Fallido| L{@Fallback?}
+        R -->|Reintento Fallido| L{"Tiene Fallback"}
         
         L -->|Sí| M[Método Fallback]
         L -->|No| N[Error]
@@ -796,7 +796,7 @@ graph LR
     B --> E[Resilience Starter]
     E --> F[Micrometer]
     F --> G[Prometheus]
-    G --> H[/q/metrics]
+    G --> H["Endpoint /q/metrics"]
     
     E --> I[Circuit Breaker Metrics]
     E --> J[Retry Metrics]
@@ -989,7 +989,7 @@ graph TD
     Ext -->|Fallo| Retry
     
     Retry -->|Reintento OK| Success
-    Retry -->|Reintento Fallido| Fallback{"@Fallback?"}
+    Retry -->|Reintento Fallido| Fallback{"Tiene Fallback"}
     
     Fallback -->|Sí| FallbackMethod[Método Fallback]
     Fallback -->|No| Error[Error]
