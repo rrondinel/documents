@@ -17,21 +17,21 @@ graph TB
     end
     
     subgraph "Application Layer"
-        REST[REST Endpoints<br/>ScoreService]
-        Routes[Routes Camel<br/>application/route]
-        DTOs[DTOs<br/>application/dto]
+        REST["REST Endpoints ScoreService"]
+        Routes["Routes Camel application/route"]
+        DTOs["DTOs application/dto"]
     end
     
     subgraph "Domain Layer"
-        DomainBeans[Beans de Dominio<br/>ScoreBean, VariablesBean]
-        DomainEntity[Entidades<br/>Claims]
-        DomainRepo[Interfaces<br/>IClaimsRepository]
+        DomainBeans["Beans de Dominio ScoreBean, VariablesBean"]
+        DomainEntity["Entidades Claims"]
+        DomainRepo["Interfaces IClaimsRepository"]
     end
     
     subgraph "Infrastructure Layer"
-        InfraBean[ConsumerBean<br/>Sin Resiliencia]
-        Proxy[Proxies HTTP<br/>infrastructure/proxy]
-        Repo[Repositorios<br/>ClaimsRepository]
+        InfraBean["ConsumerBean Sin Resiliencia"]
+        Proxy["Proxies HTTP infrastructure/proxy"]
+        Repo["Repositorios ClaimsRepository"]
     end
     
     subgraph "Servicios Externos"
@@ -66,29 +66,29 @@ graph TB
     end
     
     subgraph "Application Layer"
-        REST[REST Endpoints<br/>ScoreService]
-        Routes[Routes Camel<br/>application/route]
-        RouteDecision[RouteDecisionBean<br/>✨ NUEVO]
-        UseCases[Casos de Uso<br/>✨ NUEVO]
-        DTOs[DTOs Input/Output<br/>✨ REORGANIZADO]
+        REST["REST Endpoints ScoreService"]
+        Routes["Routes Camel application/route"]
+        RouteDecision["RouteDecisionBean ✨ NUEVO"]
+        UseCases["Casos de Uso ✨ NUEVO"]
+        DTOs["DTOs Input/Output ✨ REORGANIZADO"]
     end
     
     subgraph "Domain Layer"
-        DomainBeans[Beans de Dominio<br/>ScoreBean, VariablesBean]
-        DomainServices[Servicios de Dominio<br/>✨ NUEVO]
-        DomainEntity[Entidades<br/>Claims]
-        DomainRepo[Interfaces<br/>IClaimsRepository]
+        DomainBeans["Beans de Dominio ScoreBean, VariablesBean"]
+        DomainServices["Servicios de Dominio ✨ NUEVO"]
+        DomainEntity["Entidades Claims"]
+        DomainRepo["Interfaces IClaimsRepository"]
     end
     
     subgraph "Infrastructure Layer"
-        InfraBean[ConsumerBean<br/>✅ Con Resiliencia]
-        Proxy[Proxies HTTP<br/>infrastructure/proxy]
-        Repo[Repositorios<br/>ClaimsRepository]
+        InfraBean["ConsumerBean ✅ Con Resiliencia"]
+        Proxy["Proxies HTTP infrastructure/proxy"]
+        Repo["Repositorios ClaimsRepository"]
     end
     
     subgraph "Resiliencia"
-        Resilience[Resilience Starter<br/>✨ NUEVO]
-        Metrics[Micrometer/Prometheus<br/>✨ NUEVO]
+        Resilience["Resilience Starter ✨ NUEVO"]
+        Metrics["Micrometer/Prometheus ✨ NUEVO"]
     end
     
     subgraph "Servicios Externos"
@@ -137,24 +137,24 @@ graph TD
     Root --> Infra[infrastructure]
     Root --> Cross[cross]
     
-    App --> AppBean[bean<br/>ClaimsBean]
-    App --> AppConfig[config<br/>CORS, Redis, Jackson]
-    App --> AppDto[dto<br/>Mezclados]
-    App --> AppRoute[route<br/>6 RouteBuilders]
-    App --> AppService[service<br/>ScoreService]
+    App --> AppBean["bean ClaimsBean"]
+    App --> AppConfig["config CORS, Redis, Jackson"]
+    App --> AppDto["dto Mezclados"]
+    App --> AppRoute["route 6 RouteBuilders"]
+    App --> AppService["service ScoreService"]
     
     Domain --> DomAgg[aggregations]
-    Domain --> DomBean[bean<br/>ScoreBean, VariablesBean<br/>⚠️ Depende de App/Infra]
-    Domain --> DomEntity[entity<br/>Claims]
-    Domain --> DomRepo[irepository<br/>IClaimsRepository<br/>⚠️ Depende de App]
-    Domain --> DomProc[proccess<br/>⚠️ Depende de Infra]
+    Domain --> DomBean["bean ScoreBean, VariablesBean ⚠️ Depende de App/Infra"]
+    Domain --> DomEntity["entity Claims"]
+    Domain --> DomRepo["irepository IClaimsRepository ⚠️ Depende de App"]
+    Domain --> DomProc["proccess ⚠️ Depende de Infra"]
     
-    Infra --> InfraBean[bean<br/>ConsumerBean<br/>❌ Sin Resiliencia]
-    Infra --> InfraProxy[proxy<br/>55 DTOs]
-    Infra --> InfraRepo[repository<br/>ClaimsRepository]
+    Infra --> InfraBean["bean ConsumerBean ❌ Sin Resiliencia"]
+    Infra --> InfraProxy["proxy 55 DTOs"]
+    Infra --> InfraRepo["repository ClaimsRepository"]
     
-    Cross --> CrossExc[exception<br/>5 Excepciones]
-    Cross --> CrossUtil[util<br/>17 Utilidades]
+    Cross --> CrossExc["exception 5 Excepciones"]
+    Cross --> CrossUtil["util 17 Utilidades"]
     
     style DomBean fill:#ffcccc
     style DomRepo fill:#ffcccc
@@ -173,29 +173,29 @@ graph TD
     Root --> Infra[infrastructure]
     Root --> Cross[cross]
     
-    App --> AppBean[bean<br/>ClaimsBean<br/>+ camel/ ✨]
-    App --> AppConfig[config<br/>CORS, Redis, Jackson]
-    App --> AppContext[context<br/>TechnicalContext ✨]
-    App --> AppDto[dto<br/>input/ ✨<br/>output/ ✨]
-    App --> AppRoute[route<br/>6 RouteBuilders<br/>+ RouteDecisionBean ✨]
-    App --> AppService[service<br/>ScoreService]
-    App --> AppUseCase[usecase<br/>3 Casos de Uso ✨]
-    App --> AppUtil[util<br/>ServiceLocator ✨]
+    App --> AppBean["bean ClaimsBean + camel/ ✨"]
+    App --> AppConfig["config CORS, Redis, Jackson"]
+    App --> AppContext["context TechnicalContext ✨"]
+    App --> AppDto["dto input/ ✨ output/ ✨"]
+    App --> AppRoute["route 6 RouteBuilders + RouteDecisionBean ✨"]
+    App --> AppService["service ScoreService"]
+    App --> AppUseCase["usecase 3 Casos de Uso ✨"]
+    App --> AppUtil["util ServiceLocator ✨"]
     
     Domain --> DomAgg[aggregations]
-    Domain --> DomBean[bean<br/>ScoreBean, VariablesBean<br/>⚠️ Mantiene dependencias]
-    Domain --> DomEntity[entity<br/>Claims]
-    Domain --> DomRepo[irepository<br/>IClaimsRepository<br/>⚠️ Mantiene dependencias]
-    Domain --> DomProc[proccess<br/>⚠️ Mantiene dependencias]
-    Domain --> DomService[service<br/>4 Servicios ✨]
+    Domain --> DomBean["bean ScoreBean, VariablesBean ⚠️ Mantiene dependencias"]
+    Domain --> DomEntity["entity Claims"]
+    Domain --> DomRepo["irepository IClaimsRepository ⚠️ Mantiene dependencias"]
+    Domain --> DomProc["proccess ⚠️ Mantiene dependencias"]
+    Domain --> DomService["service 4 Servicios ✨"]
     
-    Infra --> InfraBean[bean<br/>ConsumerBean<br/>✅ Con Resiliencia]
-    Infra --> InfraProxy[proxy<br/>dto/ ✨<br/>route/ ✨]
-    Infra --> InfraRepo[repository<br/>ClaimsRepository]
+    Infra --> InfraBean["bean ConsumerBean ✅ Con Resiliencia"]
+    Infra --> InfraProxy["proxy dto/ ✨ route/ ✨"]
+    Infra --> InfraRepo["repository ClaimsRepository"]
     
-    Cross --> CrossDto[dto<br/>ErrorResponseDto ✨]
-    Cross --> CrossExc[exception<br/>5 Excepciones]
-    Cross --> CrossUtil[util<br/>19 Utilidades ✨]
+    Cross --> CrossDto["dto ErrorResponseDto ✨"]
+    Cross --> CrossExc["exception 5 Excepciones"]
+    Cross --> CrossUtil["util 19 Utilidades ✨"]
     
     style AppContext fill:#90EE90
     style AppDto fill:#90EE90
@@ -226,14 +226,14 @@ sequenceDiagram
     Route->>Domain: ScoreBean.validarGestionCalificacion()
     Domain->>Route: Establece propiedades
     Route->>Infra: consumerBrmsScoreExperian()
-    Note over Infra: ❌ Sin Timeout<br/>❌ Sin Circuit Breaker<br/>❌ Sin Retry
+    Note over Infra: ❌ Sin Timeout, ❌ Sin Circuit Breaker, ❌ Sin Retry
     Infra->>External: HTTP Request
     External-->>Infra: HTTP Response (o Timeout)
     Infra-->>Route: Exchange con respuesta
     Route-->>REST: Respuesta
     REST-->>Client: JSON Response
     
-    Note over Infra,External: Si falla: Error propagado<br/>sin estrategia de recuperación
+    Note over Infra,External: Si falla: Error propagado sin estrategia de recuperación
 ```
 
 ### 3.2. Proyecto Migrado: Flujo con Resiliencia
@@ -261,7 +261,7 @@ sequenceDiagram
     Decision-->>Route: true/false
     Route->>Infra: consumerBrmsScoreExperian()
     Infra->>Resilience: Interceptores CDI
-    Note over Resilience: ✅ @Timeout(2000ms)<br/>✅ @CircuitBreaker<br/>✅ @Retry(maxRetries=1)
+    Note over Resilience: ✅ @Timeout(2000ms), ✅ @CircuitBreaker, ✅ @Retry(maxRetries=1)
     Resilience->>External: HTTP Request (con timeout)
     alt Éxito
         External-->>Resilience: HTTP 200 OK
@@ -295,7 +295,7 @@ sequenceDiagram
     Route-->>REST: Respuesta o Error
     REST-->>Client: JSON Response o Error
     
-    Note over Resilience,Metrics: Todas las operaciones<br/>se registran en métricas
+    Note over Resilience,Metrics: Todas las operaciones se registran en métricas
 ```
 
 ---
@@ -321,7 +321,7 @@ graph LR
     style I fill:#ffcccc
     style F fill:#ffcccc
     
-    Note1[❌ Sin Timeout<br/>❌ Sin Circuit Breaker<br/>❌ Sin Retry<br/>❌ Sin Fallback]
+    Note1["❌ Sin Timeout, ❌ Sin Circuit Breaker, ❌ Sin Retry, ❌ Sin Fallback"]
     
     style Note1 fill:#ffcccc
 ```
@@ -336,11 +336,11 @@ graph LR
         C --> D[ConsumerBean]
         D --> E[Resilience Starter]
         
-        E --> F{@Timeout<br/>2000ms}
-        F -->|OK| G{@CircuitBreaker}
-        F -->|Timeout| R[@Retry]
+        E --> F["@Timeout 2000ms"]
+        F -->|OK| G["@CircuitBreaker"]
+        F -->|Timeout| R["@Retry"]
         
-        G -->|CLOSED| H{@Retry<br/>maxRetries=1}
+        G -->|CLOSED| H["@Retry maxRetries=1"]
         G -->|OPEN| S[CircuitBreakerOpenException]
         
         H -->|Primer Intento| I[HTTP Request]
@@ -479,18 +479,18 @@ graph TD
     B --> C[ConsumerBean.consumerBrmsScoreExperian]
     C --> D[Resilience Starter]
     
-    D --> E{@Timeout<br/>2000ms}
-    E -->|OK| F{@CircuitBreaker<br/>Estado?}
-    E -->|Timeout| G[@Retry<br/>maxRetries=1]
+    D --> E["@Timeout 2000ms"]
+    E -->|OK| F["@CircuitBreaker Estado?"]
+    E -->|Timeout| G["@Retry maxRetries=1"]
     
     F -->|CLOSED| H[HTTP Request]
-    F -->|OPEN| I[CircuitBreakerOpenException<br/>Sin llamada]
+    F -->|OPEN| I["CircuitBreakerOpenException Sin llamada"]
     F -->|HALF_OPEN| H
     
     H --> J{BRMS Service}
     J -->|Éxito 200ms| K[Respuesta OK]
-    J -->|Lento 3000ms| L[@Timeout<br/>Lanza TimeoutException]
-    J -->|Error 500| M[@Retry<br/>Reintento]
+    J -->|Lento 3000ms| L["@Timeout Lanza TimeoutException"]
+    J -->|Error 500| M["@Retry Reintento"]
     J -->|No Responde| L
     J -->|Caído| M
     
@@ -501,9 +501,9 @@ graph TD
     M -->|Reintento OK| K
     M -->|Reintento Fallido| N
     
-    K --> O[Actualizar Circuit Breaker<br/>SUCCESS]
-    N --> P[Actualizar Circuit Breaker<br/>FAILURE]
-    I --> Q[Respuesta Rápida<br/>Sin llamada]
+    K --> O["Actualizar Circuit Breaker SUCCESS"]
+    N --> P["Actualizar Circuit Breaker FAILURE"]
+    I --> Q["Respuesta Rápida Sin llamada"]
     
     O --> R[Procesa Respuesta]
     P --> S[onException Camel]
@@ -534,24 +534,24 @@ graph TD
 ```mermaid
 graph TB
     subgraph "Endpoints con Resiliencia Completa"
-        A1[BRMS Score Experian<br/>✅ Timeout 2000ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A2[Bantotal Obtener Score<br/>✅ Timeout 2500ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A3[Compartamos Variables<br/>✅ Timeout 2000ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A4[Compartamos Catálogos<br/>✅ Timeout 2000ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A5[Bantotal Guía Proceso<br/>✅ Timeout 2500ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A6[Bantotal Fecha Sistema<br/>✅ Timeout 2500ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A7[SCO Cantidad Consultas<br/>✅ Timeout 2000ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A8[Experian Externo<br/>✅ Timeout 2500ms<br/>✅ Circuit Breaker<br/>✅ Retry]
-        A9[Bantotal Experian Obtener<br/>✅ Timeout 3000ms<br/>✅ Circuit Breaker<br/>✅ Retry]
+        A1["BRMS Score Experian - Timeout 2000ms - Circuit Breaker - Retry"]
+        A2["Bantotal Obtener Score - Timeout 2500ms - Circuit Breaker - Retry"]
+        A3["Compartamos Variables - Timeout 2000ms - Circuit Breaker - Retry"]
+        A4["Compartamos Catálogos - Timeout 2000ms - Circuit Breaker - Retry"]
+        A5["Bantotal Guía Proceso - Timeout 2500ms - Circuit Breaker - Retry"]
+        A6["Bantotal Fecha Sistema - Timeout 2500ms - Circuit Breaker - Retry"]
+        A7["SCO Cantidad Consultas - Timeout 2000ms - Circuit Breaker - Retry"]
+        A8["Experian Externo - Timeout 2500ms - Circuit Breaker - Retry"]
+        A9["Bantotal Experian Obtener - Timeout 3000ms - Circuit Breaker - Retry"]
     end
     
     subgraph "Endpoints Críticos Sin Retry"
-        B1[Bantotal Experian Crear<br/>✅ Timeout 3000ms<br/>✅ Circuit Breaker<br/>❌ Sin Retry]
-        B2[SCO Crear Consultas<br/>✅ Timeout 2500ms<br/>✅ Circuit Breaker<br/>❌ Sin Retry]
+        B1["Bantotal Experian Crear - Timeout 3000ms - Circuit Breaker - Sin Retry"]
+        B2["SCO Crear Consultas - Timeout 2500ms - Circuit Breaker - Sin Retry"]
     end
     
     subgraph "Endpoint con Fallback"
-        C1[Experian SOAP Nombres<br/>✅ Timeout 2000ms<br/>✅ Circuit Breaker<br/>✅ Retry<br/>✅ Fallback]
+        C1["Experian SOAP Nombres - Timeout 2000ms - Circuit Breaker - Retry - Fallback"]
     end
     
     style A1 fill:#90EE90
@@ -577,27 +577,27 @@ graph TB
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        AppRoute[Routes Camel<br/>6 RouteBuilders]
-        AppService[ScoreService<br/>REST Endpoints]
-        AppDTO[DTOs Mezclados]
-        AppBean[ClaimsBean]
+        AppRoute["Routes Camel 6 RouteBuilders"]
+        AppService["ScoreService REST Endpoints"]
+        AppDTO["DTOs Mezclados"]
+        AppBean["ClaimsBean"]
     end
     
     subgraph "Domain Layer"
-        DomBean[ScoreBean<br/>VariablesBean<br/>⚠️ Depende de App/Infra]
-        DomEntity[Claims Entity]
-        DomRepo[IClaimsRepository<br/>⚠️ Depende de App]
+        DomBean["ScoreBean VariablesBean ⚠️ Depende de App/Infra"]
+        DomEntity["Claims Entity"]
+        DomRepo["IClaimsRepository ⚠️ Depende de App"]
     end
     
     subgraph "Infrastructure Layer"
-        InfraBean[ConsumerBean<br/>❌ Sin Anotaciones]
-        InfraProxy[Proxy DTOs<br/>55 archivos]
-        InfraRepo[ClaimsRepository]
+        InfraBean["ConsumerBean ❌ Sin Anotaciones"]
+        InfraProxy["Proxy DTOs 55 archivos"]
+        InfraRepo["ClaimsRepository"]
     end
     
     subgraph "Cross Layer"
-        CrossUtil[Utilidades<br/>17 archivos]
-        CrossExc[Excepciones<br/>5 clases]
+        CrossUtil["Utilidades 17 archivos"]
+        CrossExc["Excepciones 5 clases"]
     end
     
     AppService --> AppRoute
@@ -617,25 +617,25 @@ graph TB
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        AppRoute[Routes Camel<br/>6 RouteBuilders<br/>+ RouteDecisionBean ✨]
-        AppService[ScoreService<br/>REST Endpoints]
-        AppDTO[DTOs Input/Output<br/>✨ Separados]
-        AppBean[ClaimsBean]
-        AppUseCase[3 Casos de Uso ✨]
-        AppContext[TechnicalContext ✨]
+        AppRoute["Routes Camel 6 RouteBuilders + RouteDecisionBean ✨"]
+        AppService["ScoreService REST Endpoints"]
+        AppDTO["DTOs Input/Output ✨ Separados"]
+        AppBean["ClaimsBean"]
+        AppUseCase["3 Casos de Uso ✨"]
+        AppContext["TechnicalContext ✨"]
     end
     
     subgraph "Domain Layer"
-        DomBean[ScoreBean<br/>VariablesBean<br/>⚠️ Mantiene dependencias]
-        DomService[4 Servicios de Dominio ✨]
-        DomEntity[Claims Entity]
-        DomRepo[IClaimsRepository<br/>⚠️ Mantiene dependencias]
+        DomBean["ScoreBean VariablesBean ⚠️ Mantiene dependencias"]
+        DomService["4 Servicios de Dominio ✨"]
+        DomEntity["Claims Entity"]
+        DomRepo["IClaimsRepository ⚠️ Mantiene dependencias"]
     end
     
     subgraph "Infrastructure Layer"
-        InfraBean[ConsumerBean<br/>✅ Con Anotaciones<br/>@Timeout, @CircuitBreaker<br/>@Retry, @Fallback]
-        InfraProxy[Proxy DTOs/Route<br/>✨ Reorganizado]
-        InfraRepo[ClaimsRepository]
+        InfraBean["ConsumerBean ✅ Con Anotaciones @Timeout, @CircuitBreaker, @Retry, @Fallback"]
+        InfraProxy["Proxy DTOs/Route ✨ Reorganizado"]
+        InfraRepo["ClaimsRepository"]
     end
     
     subgraph "Resilience Layer"
@@ -644,9 +644,9 @@ graph TB
     end
     
     subgraph "Cross Layer"
-        CrossUtil[Utilidades<br/>19 archivos ✨]
-        CrossExc[Excepciones<br/>5 clases]
-        CrossDTO[ErrorResponseDto ✨]
+        CrossUtil["Utilidades 19 archivos ✨"]
+        CrossExc["Excepciones 5 clases"]
+        CrossDTO["ErrorResponseDto ✨"]
     end
     
     AppService --> AppRoute
@@ -684,7 +684,7 @@ graph TD
     A[Request] --> B[ScoreRouteBuilder]
     B --> C[ScoreBean.validarGestionCalificacion]
     C --> D[Establece exchangeProperty]
-    D --> E{choice en DSL<br/>simple expression}
+    D --> E["choice en DSL simple expression"]
     
     E -->|consultaScoreExperian == true| F[direct:processCalificacionExperian]
     E -->|otherwise| G[direct:processScoreCliente]
@@ -693,7 +693,7 @@ graph TD
     G --> I[Procesa Score Cliente]
     
     style E fill:#ffcccc
-    Note1[❌ Expresión inline en DSL<br/>❌ Difícil de testear<br/>❌ Difícil de mantener]
+    Note1["❌ Expresión inline en DSL, ❌ Difícil de testear, ❌ Difícil de mantener"]
     style Note1 fill:#ffcccc
 ```
 
@@ -704,7 +704,7 @@ graph TD
     A[Request] --> B[ScoreRouteBuilder]
     B --> C[ScoreBean.validarGestionCalificacion]
     C --> D[Establece exchangeProperty]
-    D --> E{choice en DSL<br/>method RouteDecisionBean}
+    D --> E["choice en DSL method RouteDecisionBean"]
     
     E -->|isConsultaScoreExperian| F[RouteDecisionBean ✨]
     E -->|otherwise| G[RouteDecisionBean ✨]
@@ -718,7 +718,7 @@ graph TD
     style E fill:#90EE90
     style F fill:#90EE90
     style G fill:#90EE90
-    Note2[✅ Decisiones centralizadas<br/>✅ Fácil de testear<br/>✅ Fácil de mantener]
+    Note2["✅ Decisiones centralizadas, ✅ Fácil de testear, ✅ Fácil de mantener"]
     style Note2 fill:#90EE90
 ```
 
@@ -748,14 +748,14 @@ graph TD
     B --> C[Tests Unitarios<br/>9 tests]
     B --> D[Tests Integración<br/>9 tests]
     
-    C --> C1[RouteDecisionBeanTest<br/>9 tests]
-    C --> C2[JwtUtilTest<br/>1 test]
-    C --> C3[JwtContextFilterProcessorTest<br/>2 tests]
+    C --> C1["RouteDecisionBeanTest 9 tests"]
+    C --> C2["JwtUtilTest 1 test"]
+    C --> C3["JwtContextFilterProcessorTest 2 tests"]
     
-    D --> D1[ScoreRouteBuilderIT<br/>1 test]
-    D --> D2[ScoreRouteFlowIT<br/>2 tests]
-    D --> D3[MainRouteBuilderIT<br/>1 test]
-    D --> D4[ScoreServiceIT<br/>2 tests]
+    D --> D1["ScoreRouteBuilderIT 1 test"]
+    D --> D2["ScoreRouteFlowIT 2 tests"]
+    D --> D3["MainRouteBuilderIT 1 test"]
+    D --> D4["ScoreServiceIT 2 tests"]
     
     style B fill:#90EE90
     style C fill:#90EE90
@@ -873,25 +873,25 @@ graph TB
 ```mermaid
 graph LR
     subgraph "Fase 1: Timeout"
-        T1[BRMS] --> T2[✅ 2000ms]
-        T3[Bantotal Score] --> T4[✅ 2500ms]
-        T5[Experian Obtener] --> T6[✅ 3000ms]
-        T7[Experian Crear] --> T8[✅ 3000ms]
+        T1[BRMS] --> T2["2000ms"]
+        T3["Bantotal Score"] --> T4["2500ms"]
+        T5["Experian Obtener"] --> T6["3000ms"]
+        T7["Experian Crear"] --> T8["3000ms"]
     end
     
     subgraph "Fase 2: Circuit Breaker"
-        CB1[BRMS] --> CB2[✅ 12 req, 40% fail]
-        CB3[Bantotal Score] --> CB4[✅ 12 req, 40% fail]
-        CB5[Experian Obtener] --> CB6[✅ 12 req, 40% fail]
-        CB7[Experian Crear] --> CB8[✅ 12 req, 40% fail]
+        CB1[BRMS] --> CB2["12 req, 40% fail"]
+        CB3["Bantotal Score"] --> CB4["12 req, 40% fail"]
+        CB5["Experian Obtener"] --> CB6["12 req, 40% fail"]
+        CB7["Experian Crear"] --> CB8["12 req, 40% fail"]
     end
     
     subgraph "Fase 3: Retry + Fallback"
-        R1[BRMS] --> R2[✅ Retry 1x]
-        R3[Bantotal Score] --> R4[✅ Retry 1x]
-        R5[Experian Obtener] --> R6[✅ Retry 1x]
-        R7[Experian Crear] --> R8[❌ Sin Retry]
-        R9[Experian SOAP] --> R10[✅ Retry + Fallback]
+        R1[BRMS] --> R2["Retry 1x"]
+        R3["Bantotal Score"] --> R4["Retry 1x"]
+        R5["Experian Obtener"] --> R6["Retry 1x"]
+        R7["Experian Crear"] --> R8["Sin Retry"]
+        R9["Experian SOAP"] --> R10["Retry + Fallback"]
     end
     
     style T2 fill:#90EE90
@@ -954,7 +954,7 @@ graph TD
     REST --> Route[Camel Route]
     Route --> Bean[Domain Bean]
     Bean --> Consumer[ConsumerBean]
-    Consumer --> HTTP[HTTP Request<br/>Sin Protección]
+    Consumer --> HTTP["HTTP Request Sin Protección"]
     HTTP --> Ext[Servicio Externo]
     Ext -->|Éxito| Success[Respuesta]
     Ext -->|Fallo| Error[Error]
@@ -977,9 +977,9 @@ graph TD
     DomainSvc --> Consumer[ConsumerBean]
     Consumer --> Resilience[Resilience Starter ✨]
     
-    Resilience --> Timeout{@Timeout}
-    Timeout -->|OK| CB{@CircuitBreaker}
-    Timeout -->|Timeout| Retry[@Retry]
+    Resilience --> Timeout["@Timeout"]
+    Timeout -->|OK| CB["@CircuitBreaker"]
+    Timeout -->|Timeout| Retry["@Retry"]
     
     CB -->|CLOSED| HTTP[HTTP Request]
     CB -->|OPEN| CBError[CircuitBreakerOpen]
@@ -989,7 +989,7 @@ graph TD
     Ext -->|Fallo| Retry
     
     Retry -->|Reintento OK| Success
-    Retry -->|Reintento Fallido| Fallback{@Fallback?}
+    Retry -->|Reintento Fallido| Fallback{"@Fallback?"}
     
     Fallback -->|Sí| FallbackMethod[Método Fallback]
     Fallback -->|No| Error[Error]
